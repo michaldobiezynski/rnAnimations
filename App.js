@@ -1,12 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Animated, StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
+const position = new Animated.ValueXY({x:0, y:0})
+Animated.timing(position,{useNativeDriver: true, toValue:{x:200, y:500}, duration:3000}).start()
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <Animated.View style={{height:80, width: 80, alignItems: 'center',
+        justifyContent: 'center',backgroundColor: 'red',transform:[
+          {translateX:position.x},
+          {translateY:position.y}
+        ]}}>
+
+      <Text>cnq</Text>
+      </Animated.View>
+
     </View>
   );
 }
